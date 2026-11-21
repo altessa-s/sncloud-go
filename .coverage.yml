@@ -1,0 +1,30 @@
+# Coverage gate for the protocol packages.
+#
+# Enforced by .github/scripts/coverage-gate.sh. A package with no statements
+# yet is reported as skipped rather than as 0%.
+#
+# port includes the runtime clock and header helpers, so it is gated too.
+# porttest and clouddouble are
+# test doubles and the emulated cloud for tests.
+# The root package is a facade over these and is exercised end to end.
+# wiring is the composition root; its tests build every configuration and
+# check where each call goes.
+
+threshold: 90.0
+
+packages:
+  - internal/port
+  - internal/domain
+  - internal/adapter/httpapi
+  - internal/adapter/neterr
+  - internal/adapter/ws
+  - internal/app/channel
+  - internal/app/devicefiles
+  - internal/app/digests
+  - internal/app/feed
+  - internal/app/retry
+  - internal/app/session
+  - internal/app/tasks
+  - internal/app/transfers
+  - internal/app/webfiles
+  - internal/wiring

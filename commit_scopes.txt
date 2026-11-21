@@ -1,0 +1,39 @@
+# Commit Scopes for sncloud-go
+# Use these scopes in conventional commits: type(scope): description
+# The scope is optional: omit it for repository-wide changes. Never use `root`.
+# Only the first word of a non-comment line is a scope.
+# Example: fix(session): drop the access token on E0712
+
+# Repository scopes
+deps                        # Dependency updates (Dependabot writes build(deps): bump ...)
+README                      # Root README
+docs                        # Documentation
+
+# Public package
+client                      # sncloud facade: Client and its options
+errors                      # The closed set of protocol errors
+
+# Protocol (internal)
+domain                      # Pure types: identifiers, entries, tasks, digests, endpoints, errors
+port                        # Contracts the use cases ask of the outside
+channel                     # JSON envelope, cookie jar, XSRF, browser epoch, call driver
+session                     # Login, emailed code, access token, generation; depends on port.Channel
+retry                       # Retry policy and driver
+webfiles                    # Web file API (cloud.supernote.com) and recycle bin
+devicefiles                 # Device file API (viewer.supernote.com) and sync lock
+transfers                   # S3 and form uploads, ranged downloads, MD5 check
+tasks                       # To-do lists and tasks
+digests                     # Digests, groups, tags, fingerprints and comments
+feed                        # Socket.IO / Engine.IO 3 change feed state machine
+
+# Adapters and wiring (internal)
+httpapi                     # HTTP on go-atlas-net: transport, redirects, wire log
+ws                          # WebSocket dialer under the change feed
+neterr                      # Transport errors classified as protocol errors
+wiring                      # Wires the adapters into the use cases
+porttest                    # Doubles of the ports
+clouddouble                 # Emulated Supernote cloud over httptest (official and private)
+
+# Tooling
+devtools                    # Development tool dependencies
+ci                          # GitHub Actions workflows and scripts

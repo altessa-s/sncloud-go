@@ -1,0 +1,13 @@
+# Keep exceptions specific to the value detected.
+title = "sncloud-go"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Socket.IO handshake protocol constant"
+regexTarget = "secret"
+regexes = [
+  # The handshake uses this fixed value across accounts.
+  '''^K\+5xFzxbnB1iSZWqmu3Etw==$''',
+]
